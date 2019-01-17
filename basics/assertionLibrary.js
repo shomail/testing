@@ -1,20 +1,5 @@
-const { sum, subtract } = require('./math');
-
-let result, expected;
-
-console.log('Testing math.js functions');
-
-result = sum(3, 7);
-expected = 10;
-
-expect(result).toBe(expected);
-
-result = subtract(7, 3);
-expected = 4;
-
-expect(result).toBe(expected);
-
 //creation assertion library, anabstraction to make assertions easeir, same as jest framework
+//here the problem is that the error will be thrown at line where it is written and we don't get the stact trace where the actual error happen and alos it will stop execution of the other tests, thats why we need to create a test runner
 function expect(actual) {
   return {
     toBe(expected) {
@@ -26,3 +11,7 @@ function expect(actual) {
     toBeGreaterThan(expected) {}
   };
 }
+
+module.exports = {
+  expect
+};
