@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/shomail/testing/issues"
   },
-  "homepage": "https://github.com/shomail/testing#readme"
+  "homepage": "https://github.com/shomail/testing#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
