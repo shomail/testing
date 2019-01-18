@@ -12,6 +12,7 @@ function expect(actual) {
   };
 }
 
+// global.expect = expect;
 module.exports = {
   expect
 };

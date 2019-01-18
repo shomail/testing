@@ -1,5 +1,6 @@
-const { test, asyncTest } = require('./testingFramework');
-const { expect } = require('./assertionLibrary');
+//setting test utils as global so that we do not need them to import in each file
+// const { test, asyncTest } = require('./testingFramework');
+// const { expect } = require('./assertionLibrary');
 const { sum, subtract, sumAsync, subtractAsync } = require('./math');
 
 console.log('Testing math.js functions');
@@ -16,13 +17,13 @@ test('subtract subtracts numbers', () => {
   expect(result).toBe(expected);
 });
 
-asyncTest('sumAsync adds numbers async', async () => {
+test('sumAsync adds numbers async', async () => {
   const result = await sumAsync(4, 10);
   const expected = 14;
   expect(result).toBe(expected);
 });
 
-asyncTest('subtractAsync subtracts numbers async', async () => {
+test('subtractAsync subtracts numbers async', async () => {
   const result = await subtractAsync(10, 4);
   const expected = 6;
   expect(result).toBe(expected);

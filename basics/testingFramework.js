@@ -1,7 +1,9 @@
+const { expect } = require('./assertionLibrary');
+
 //test runner
-function test(title, callback) {
+async function test(title, callback) {
   try {
-    callback();
+    await callback();
     console.log(`✔︎ ${title}`);
   } catch (error) {
     console.error(`✘ ${title}`);
@@ -19,7 +21,10 @@ async function asyncTest(title, callback) {
   }
 }
 
-module.exports = {
-  test,
-  asyncTest
-};
+global.test = test;
+global.expect = expect;
+global.asyncTest = asyncTest;
+// module.exports = {
+//   test,
+//   asyncTest
+// };
