@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "customTest": "node --require ./basics/testingFramework.js ./basics/math.test.js"
+    "customTest": "node --require ./basics/testingFramework.js ./basics/math.test.js",
+    "lint": "eslint basics"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/shomail/testing#readme",
   "devDependencies": {
+    "eslint": "^5.12.1",
     "jest": "^23.6.0"
   }
 }
