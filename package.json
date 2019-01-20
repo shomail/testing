@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "customTest": "node --require ./basics/testingFramework.js ./basics/math.test.js",
-    "lint": "eslint basics"
+    "lint": "eslint basics",
+    "format": "npm run format -- --write",
+    "prettier": "prettier \"**/*.+(js|jsx|json|css|scss|ts|tsx)\" ",
+    "validate": "npm run lint && prettier -- --list-different"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,8 @@
   "homepage": "https://github.com/shomail/testing#readme",
   "devDependencies": {
     "eslint": "^5.12.1",
-    "jest": "^23.6.0"
+    "eslint-config-prettier": "^3.6.0",
+    "jest": "^23.6.0",
+    "prettier": "^1.16.0"
   }
 }
