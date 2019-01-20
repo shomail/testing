@@ -6,9 +6,10 @@
   "scripts": {
     "customTest": "node --require ./basics/testingFramework.js ./basics/math.test.js",
     "lint": "eslint basics",
-    "format": "npm run format -- --write",
+    "flow": "flow",
+    "format": "npm run prettier -- --write",
     "prettier": "prettier \"**/*.+(js|jsx|json|css|scss|ts|tsx)\" ",
-    "validate": "npm run lint && prettier -- --list-different"
+    "validate": "npm run lint && npm run prettier -- --list-different && npm run flow"
   },
   "repository": {
     "type": "git",
@@ -22,8 +23,10 @@
   },
   "homepage": "https://github.com/shomail/testing#readme",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "eslint": "^5.12.1",
     "eslint-config-prettier": "^3.6.0",
+    "flow-bin": "^0.91.0",
     "jest": "^23.6.0",
     "prettier": "^1.16.0"
   }

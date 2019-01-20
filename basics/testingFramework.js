@@ -1,6 +1,4 @@
-const {
-  expect,
-} = require('./assertionLibrary')
+const { expect } = require('./assertionLibrary')
 
 //test runner
 async function test(title, callback) {
@@ -13,10 +11,7 @@ async function test(title, callback) {
   }
 }
 
-async function asyncTest(
-  title,
-  callback,
-) {
+async function asyncTest(title, callback) {
   try {
     await callback()
     console.log(`✔︎ ${title}`)
