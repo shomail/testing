@@ -1,11 +1,15 @@
 const thumbWar = require('../thumbWar')
 const utils = require('../utils')
 
-jest.mock('../utils', () => {
-  return {
-    getWinner: jest.fn((p1, p2) => p1),
-  }
-})
+//internal or inline mock module only usable in this file
+// jest.mock('../utils', () => {
+//   return {
+//     getWinner: jest.fn((p1, p2) => p1),
+//   }
+// })
+
+//using external mock shared accross project
+jest.mock('../utils')
 
 test('return winner using module', () => {
   const winner = thumbWar('shomail', 'tahir')
