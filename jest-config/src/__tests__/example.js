@@ -1,1 +1,0 @@
-test('Checking jest integration', () => {})
