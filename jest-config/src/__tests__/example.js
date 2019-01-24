@@ -1,0 +1,1 @@
+test('Checking jest integration', () => {})
