@@ -51,3 +51,5 @@ class App extends React.Component {
 }
 
 export default App
+
+/* eslint import/namespace:0 */
