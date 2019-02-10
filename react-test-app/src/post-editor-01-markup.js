@@ -1,8 +1,9 @@
 import React from 'react'
+import {Redirect} from 'react-router'
 import {savePost} from './api'
 
 class Editor extends React.Component {
-  state = {isSaving: false}
+  state = {isSaving: false, redirect: false}
   handleSubmit = e => {
     e.preventDefault()
     const {title, content, tags} = e.target.elements
@@ -13,9 +14,12 @@ class Editor extends React.Component {
       authorId: this.props.user.id,
     }
     this.setState({isSaving: true})
-    savePost(newPost)
+    savePost(newPost).then(() => this.setState({redirect: true}))
   }
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="title-input">Title</label>
