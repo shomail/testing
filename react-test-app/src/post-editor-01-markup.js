@@ -11,6 +11,7 @@ class Editor extends React.Component {
       title: title.value,
       content: content.value,
       tags: tags.value.split(',').map(t => t.trim()),
+      date: new Date().toISOString(),
       authorId: this.props.user.id,
     }
     this.setState({isSaving: true})
