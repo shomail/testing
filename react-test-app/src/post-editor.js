@@ -3,7 +3,7 @@ import {Redirect} from 'react-router'
 import {savePost} from './api'
 
 class Editor extends React.Component {
-  state = {isSaving: false, redirect: false}
+  state = {isSaving: false, redirect: false, error: null}
   handleSubmit = e => {
     e.preventDefault()
     const {title, content, tags} = e.target.elements
@@ -15,7 +15,10 @@ class Editor extends React.Component {
       authorId: this.props.user.id,
     }
     this.setState({isSaving: true})
-    savePost(newPost).then(() => this.setState({redirect: true}))
+    savePost(newPost).then(
+      () => this.setState({redirect: true}),
+      response => this.setState({isSaving: false, error: response.data.error}),
+    )
   }
   render() {
     if (this.state.redirect) {
@@ -35,6 +38,9 @@ class Editor extends React.Component {
         <button type="submit" disabled={this.state.isSaving}>
           Submit
         </button>
+        {this.state.error ? (
+          <div data-testid="post-error">{this.state.error}</div>
+        ) : null}
       </form>
     )
   }
