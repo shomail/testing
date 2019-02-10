@@ -1,9 +1,14 @@
 import React from 'react'
 
 class Editor extends React.Component {
+  state = {isSaving: false}
+  handleSubmit = e => {
+    e.preventDefault()
+    this.setState({isSaving: true})
+  }
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label htmlFor="title-input">Title</label>
         <input id="title-input" />
 
@@ -13,7 +18,9 @@ class Editor extends React.Component {
         <label htmlFor="tags-input">Tags</label>
         <input id="tags-input" />
 
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={this.state.isSaving}>
+          Submit
+        </button>
       </form>
     )
   }
