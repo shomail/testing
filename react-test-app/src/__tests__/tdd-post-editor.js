@@ -36,16 +36,26 @@ const userBuilder = build('User').fields({
   id: sequence(s => `user-${s}`),
 })
 
-test('renders a form with title, content, tags, and a submit button', async () => {
+function renderEditor() {
   const fakeUser = userBuilder()
-  const {getByLabelText, getByText} = render(<Editor user={fakeUser} />)
+  const utils = render(<Editor user={fakeUser} />)
   const fakePost = postBuilder()
-  const preDate = Date.now()
 
-  getByLabelText(/title/i).value = fakePost.title
-  getByLabelText(/content/i).value = fakePost.content
-  getByLabelText(/tags/i).value = fakePost.tags.join(', ')
-  const submitButton = getByText(/submit/i)
+  utils.getByLabelText(/title/i).value = fakePost.title
+  utils.getByLabelText(/content/i).value = fakePost.content
+  utils.getByLabelText(/tags/i).value = fakePost.tags.join(', ')
+  const submitButton = utils.getByText(/submit/i)
+  return {
+    ...utils,
+    submitButton,
+    fakeUser,
+    fakePost,
+  }
+}
+
+test('renders a form with title, content, tags, and a submit button', async () => {
+  const {submitButton, fakePost, fakeUser} = renderEditor()
+  const preDate = Date.now()
 
   fireEvent.click(submitButton)
 
@@ -71,16 +81,7 @@ test('renders a form with title, content, tags, and a submit button', async () =
 test('renders an error message from the server', async () => {
   const testError = 'test error'
   mockSavePost.mockRejectedValueOnce({data: {error: testError}})
-  const fakeUser = userBuilder()
-  const {getByLabelText, getByText, getByTestId} = render(
-    <Editor user={fakeUser} />,
-  )
-  const fakePost = postBuilder()
-
-  getByLabelText(/title/i).value = fakePost.title
-  getByLabelText(/content/i).value = fakePost.content
-  getByLabelText(/tags/i).value = fakePost.tags.join(', ')
-  const submitButton = getByText(/submit/i)
+  const {submitButton, getByTestId} = renderEditor()
 
   fireEvent.click(submitButton)
 
