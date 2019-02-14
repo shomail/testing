@@ -1,6 +1,6 @@
 module.exports = {
   ...require('./jest-common'),
-  displayName: 'SERVER',
+  displayName: 'server',
   testEnvironment: 'jest-environment-node',
   testMatch: ['**/__server_tests__/**/*.js'],
 }

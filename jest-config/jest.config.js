@@ -1,23 +1,29 @@
 module.exports = {
   ...require('./test/jest-common'),
-  projects: [
-    './test/jest.lint.js',
-    './test/jest.client.js',
-    './test/jest.server.js',
+  collectCoverageFrom: [
+    '**/src/**/*.js',
+    '!**/__tests__/**',
+    '!**/__server_tests__/**',
+    '!**/node_modules/**',
   ],
-  collectCoverageFrom: ['**/src/**/*.js'],
   coverageThreshold: {
     global: {
-      statements: 17,
-      branches: 4,
-      lines: 17,
-      functions: 20,
+      statements: 10,
+      branches: 5,
+      functions: 15,
+      lines: 8,
     },
     './src/shared/utils.js': {
       statements: 100,
       branches: 80,
-      lines: 100,
       functions: 100,
+      lines: 100,
     },
   },
+  projects: [
+    './test/jest.lint.js',
+    './test/jest.client.js',
+    './test/jest.server.js',
+    './server',
+  ],
 }

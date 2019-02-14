@@ -22,8 +22,4 @@ module.exports = {
       },
     },
   ],
-  rules: {
-    'no-debugger': 'off',
-    'max-lines-per-function': 'off',
-  },
 }

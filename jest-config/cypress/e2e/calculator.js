@@ -1,8 +1,6 @@
 describe('anonymous calculator', () => {
   it('can make calculations', () => {
-    const user = cy
-    user
-      .visit('/')
+    cy.visit('/')
       .getByText(/^1$/)
       .click()
       .getByText(/^\+$/)
