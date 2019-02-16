@@ -1,7 +1,11 @@
-test('Fake Test', () => {
-  expect(true).toBeTruthy();
-});
+import { add } from './App';
 
-test('Fake Two', () => {
-  expect(true).toBeTruthy();
+//Unit test
+//It only tests one thing
+
+test('add numbers', () => {
+  const result = add(2, 5);
+
+  //this is an assertion
+  expect(result).toBe(7);
 });
