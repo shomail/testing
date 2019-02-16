@@ -1,5 +1,14 @@
 import { add, total } from './App';
 
+//mock function
+const sub = jest.fn(() => 2);
+
+test('aub subtract numbers', () => {
+  expect(sub(2, 1)).toBe(2);
+  expect(sub).toHaveBeenCalledTimes(1);
+  expect(sub).toHaveBeenCalledWith(2, 1);
+});
+
 //Unit test
 //It only tests one thing
 
