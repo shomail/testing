@@ -1,27 +1,23 @@
-import { add, total } from './App';
+import { total } from './App';
+import { add } from './math';
 
-//mock function
-const sub = jest.fn(() => 2);
+//module mocking
+jest.mock('./math', () => ({
+  add: jest.fn(() => 25)
+}));
 
-test('aub subtract numbers', () => {
-  expect(sub(2, 1)).toBe(2);
-  expect(sub).toHaveBeenCalledTimes(1);
-  expect(sub).toHaveBeenCalledWith(2, 1);
-});
-
-//Unit test
-//It only tests one thing
-
-test('add numbers', () => {
-  const result = add(2, 5);
-
-  //this is an assertion
-  expect(result).toBe(7);
-});
+//after module mocking it's an unit test instead of integration test
 
 //Integration test
 //total relies on add function
 //if add breaks total will break too
 test('total adds up', () => {
   expect(total(5, 20)).toBe('$25');
+  expect(add).toHaveBeenCalledTimes(1);
+
+  //Redundant, not to be done in real world code
+  add.mockImplementation(() => 30);
+
+  expect(total(5, 25)).toBe('$30');
+  expect(add).toHaveBeenCalledTimes(2);
 });
