@@ -10,11 +10,15 @@ const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
 class MovieDetail extends Component {
   state = {
     movie: {},
-  }
+  };
 
   async componentDidMount() {
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=hi&language=en-US`);
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${
+          this.props.match.params.id
+        }?api_key=8be073837c1de6e9c10ad7d98b70aa3c&language=en-US`,
+      );
       const movie = await res.json();
       this.setState({
         movie,
