@@ -4,7 +4,7 @@ export default class MovieForm extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form data-testid="movie-form">
           <input type="text" />
           <button type="button">Save</button>
         </form>
