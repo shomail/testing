@@ -6,8 +6,8 @@ afterEach(cleanup);
 
 test('<Counter />', () => {
   // Render the component
-  const { debug, getByTestId } = render(<Counter />);
-  //   debug(); // output dom as string in test run
+  const { getByTestId } = render(<Counter />);
+  //   debug(); // output dom as string in test run, pulled from render
 
   // Assert counter-btn is a button
   const counterBtn = getByTestId('counter-btn');
