@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 
 export default class MovieForm extends Component {
+  state = {
+    text: '',
+  };
+
   render() {
+    const { submitForm } = this.props;
+    const { text } = this.state;
     return (
       <div>
-        <form data-testid="movie-form" onSubmit={() => console.log('form submitted')}>
+        <form
+          data-testid="movie-form"
+          onSubmit={() => submitForm({
+              text,
+            })
+          }
+        >
           <input type="text" />
           <button type="submit">Save</button>
         </form>
