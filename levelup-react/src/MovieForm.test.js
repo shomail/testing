@@ -10,8 +10,12 @@ test('<MovieForm />', () => {
   const { queryByTestId, getByText, getByLabelText } = render(<MovieForm submitForm={onSubmit} />);
   expect(queryByTestId('movie-form')).toBeTruthy();
 
-  getByLabelText('Text').value = 'hello';
-  fireEvent.change(getByLabelText('Text'));
+  //   getByLabelText('Text').value = 'hello';
+  //   fireEvent.change(getByLabelText('Text'));
+
+  fireEvent.change(getByLabelText('Text'), {
+    target: { value: 'hello' },
+  });
 
   fireEvent.click(getByText('Save'));
 
