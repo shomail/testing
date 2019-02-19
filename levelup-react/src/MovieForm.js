@@ -4,9 +4,9 @@ export default class MovieForm extends Component {
   render() {
     return (
       <div>
-        <form data-testid="movie-form">
+        <form data-testid="movie-form" onSubmit={() => console.log('form submitted')}>
           <input type="text" />
-          <button type="button">Save</button>
+          <button type="submit">Save</button>
         </form>
       </div>
     );
