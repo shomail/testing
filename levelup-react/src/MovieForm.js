@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class MovieForm extends Component {
   state = {
@@ -24,3 +25,11 @@ export default class MovieForm extends Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  submitForm: PropTypes.func,
+};
+
+MovieForm.defaultProps = {
+  submitForm: () => true,
+};

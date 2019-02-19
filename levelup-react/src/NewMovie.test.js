@@ -11,9 +11,7 @@ test('<NewMovie />', () => {
   // instead enzyme recommends shallow render of comp
   // here in this case MovieForm comp also gets rendered
 
-  const {
- getByTestId, debug, queryByTestId, container 
-} = render(<NewMovie />);
+  const { getByTestId, queryByTestId, container } = render(<NewMovie />);
   expect(getByTestId('page-title').textContent).toBe('Enter New Movie');
   expect(queryByTestId('movie-form')).toBeTruthy();
   expect(container.firstChild).toMatchSnapshot();
