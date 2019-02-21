@@ -24,8 +24,7 @@ const movie = {
 
 test('<MovieDetail />', async () => {
   fetch.mockResponseOnce(JSON.stringify(movie));
-  const { debug, getByTestId } = render(<MovieDetail match={match} />);
+  const { getByTestId } = render(<MovieDetail match={match} />);
   await waitForElement(() => getByTestId('movie-title'));
   expect(getByTestId('movie-title').textContent).toBe(movie.title);
-  debug();
 });
