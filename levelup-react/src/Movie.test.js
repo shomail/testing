@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
 import { MemoryRouter } from 'react-router-dom';
-import Movie from './Movie';
+import Movie, { POSTER_PATH } from './Movie';
 
 afterEach(() => {
   cleanup();
@@ -26,12 +26,12 @@ test('<Movie />', () => {
 
 test('<Movie /> with Movie prop', () => {
   // testing for error thrown if no props passed
-  const { debug, getByTestId } = render(
+  const { getByTestId } = render(
     <MemoryRouter>
       <Movie movie={movie} />
     </MemoryRouter>,
   );
   expect(console.error).not.toBeCalled();
   expect(getByTestId('movie-link').getAttribute('href')).toBe(`/${movie.id}`);
-  debug();
+  expect(getByTestId('movie-img').src).toBe(`${POSTER_PATH}${movie.poster_path}`);
 });
