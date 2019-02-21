@@ -17,14 +17,15 @@ const match = {
 
 console.error = jest.fn();
 
+const movie = {
+  id: 'movie id',
+  title: 'movie title',
+};
+
 test('<MovieDetail />', async () => {
-  fetch.mockResponseOnce(
-    JSON.stringify({
-      id: 'movie id',
-      title: 'movie title',
-    }),
-  );
-  const { debug, getByText } = render(<MovieDetail match={match} />);
-  await waitForElement(() => getByText('movie title'));
+  fetch.mockResponseOnce(JSON.stringify(movie));
+  const { debug, getByTestId } = render(<MovieDetail match={match} />);
+  await waitForElement(() => getByTestId('movie-title'));
+  expect(getByTestId('movie-title').textContent).toBe(movie.title);
   debug();
 });
