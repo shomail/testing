@@ -26,10 +26,12 @@ test('<Movie />', () => {
 
 test('<Movie /> with Movie prop', () => {
   // testing for error thrown if no props passed
-  render(
+  const { debug, getByTestId } = render(
     <MemoryRouter>
       <Movie movie={movie} />
     </MemoryRouter>,
   );
   expect(console.error).not.toBeCalled();
+  expect(getByTestId('movie-link').getAttribute('href')).toBe(`/${movie.id}`);
+  debug();
 });
