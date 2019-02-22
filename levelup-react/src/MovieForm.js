@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class MovieForm extends Component {
   state = {
-    text: ''
+    text: '',
   };
 
   render() {
@@ -13,9 +13,8 @@ export default class MovieForm extends Component {
       <div>
         <form
           data-testid="movie-form"
-          onSubmit={() =>
-            submitForm({
-              text
+          onSubmit={() => submitForm({
+              text,
             })
           }
         >
@@ -31,9 +30,9 @@ export default class MovieForm extends Component {
 }
 
 MovieForm.propTypes = {
-  submitForm: PropTypes.func
+  submitForm: PropTypes.func,
 };
 
 MovieForm.defaultProps = {
-  submitForm: () => true
+  submitForm: () => true,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitForElement } from 'react-testing-library';
+import { render, cleanup } from 'react-testing-library';
 import MoviesList from './MoviesList';
 
 global.fetch = require('jest-fetch-mock');

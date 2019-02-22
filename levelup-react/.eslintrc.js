@@ -22,7 +22,9 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 0,
     'function-paren-newline': 0,
-    'react/prefer-stateless-function': 0
+    'react/prefer-stateless-function': 0,
+    indent: 0,
+    'no-console': 0
   },
   globals: {
     test: true,

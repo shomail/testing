@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
+import PropTypes from 'prop-types';
 import { Poster } from './Movie';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
@@ -13,11 +14,10 @@ class MovieDetail extends Component {
   };
 
   async componentDidMount() {
+    const { match } = this.props;
     try {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${
-          this.props.match.params.id
-        }?api_key=8be073837c1de6e9c10ad7d98b70aa3c&language=en-US`,
+        `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=8be073837c1de6e9c10ad7d98b70aa3c&language=en-US`,
       );
       const movie = await res.json();
       this.setState({
@@ -51,6 +51,14 @@ class MovieDetail extends Component {
 }
 
 export default MovieDetail;
+
+MovieDetail.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 const MovieWrapper = styled.div`
   position: relative;
