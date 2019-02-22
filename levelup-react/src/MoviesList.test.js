@@ -26,7 +26,7 @@ const movie = movies.results[0];
 
 test('<MoviesList />', async () => {
   fetch.mockResponseOnce(JSON.stringify(movies));
-  const { debug, getByTestId, queryByTestId } = render(
+  const { getByTestId, queryByTestId, getAllByTestId } = render(
     <MemoryRouter>
       <MoviesList />
     </MemoryRouter>,
@@ -35,5 +35,5 @@ test('<MoviesList />', async () => {
   await waitForElement(() => getByTestId('movie-link'));
   expect(queryByTestId('loading-message')).toBeFalsy();
   expect(getByTestId('movie-link').getAttribute('href')).toBe(`/${movie.id}`);
-  debug();
+  expect(getAllByTestId('movie-link').length).toBe(movies.results.length);
 });
