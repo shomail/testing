@@ -22,13 +22,18 @@ const movies = {
   ],
 };
 
+const movie = movies.results[0];
+
 test('<MoviesList />', async () => {
   fetch.mockResponseOnce(JSON.stringify(movies));
-  const { debug, getByTestId } = render(
+  const { debug, getByTestId, queryByTestId } = render(
     <MemoryRouter>
       <MoviesList />
     </MemoryRouter>,
   );
+  expect(getByTestId('loading-message')).toBeTruthy();
   await waitForElement(() => getByTestId('movie-link'));
+  expect(queryByTestId('loading-message')).toBeFalsy();
+  expect(getByTestId('movie-link').getAttribute('href')).toBe(`/${movie.id}`);
   debug();
 });
