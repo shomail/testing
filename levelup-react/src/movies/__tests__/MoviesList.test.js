@@ -8,6 +8,7 @@ global.fetch = require('jest-fetch-mock');
 afterEach(() => cleanup);
 
 const movies = {
+  success: true,
   results: [
     {
       id: 'movie 1',
@@ -36,4 +37,16 @@ test('<MoviesList />', async () => {
   expect(queryByTestId('loading-message')).toBeFalsy();
   expect(getByTestId('movie-link').getAttribute('href')).toBe(`/${movie.id}`);
   expect(getAllByTestId('movie-link').length).toBe(movies.results.length);
+});
+
+test('<MoviesList /> API fail', async () => {
+  movies.success = false;
+  fetch.mockResponseOnce(JSON.stringify(movies));
+  const { getByTestId } = render(
+    <MemoryRouter>
+      <MoviesList />
+    </MemoryRouter>,
+  );
+  await waitForElement(() => getByTestId('movie-link'));
+  expect(getByTestId('loading-message')).toBeTruthy();
 });
