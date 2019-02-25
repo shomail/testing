@@ -5,18 +5,18 @@ import Movie from './Movie';
 
 class MoviesList extends PureComponent {
   state = {
-    movies: [],
+    movies: []
   };
 
   async componentDidMount() {
     try {
       const res = await fetch(
-        'https://api.themoviedb.org/3/discover/movie?api_key=8be073837c1de6e9c10ad7d98b70aa3c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1',
+        'https://api.themoviedb.org/3/discover/movie?api_key=8be073837c1de6e9c10ad7d98b70aa3c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
       );
       const movies = await res.json();
       if (movies.success) {
         this.setState({
-          movies: movies.results,
+          movies: movies.results
         });
       }
     } catch (e) {
@@ -26,7 +26,7 @@ class MoviesList extends PureComponent {
 
   render() {
     const { movies } = this.state;
-    if (movies < 1) return <h1 data-testid="loading-message">Loading...</h1>;
+    if (!movies.length) return <h1 data-testid="loading-message">Loading...</h1>;
     return (
       <MovieGrid>
         {movies.map(movie => (
