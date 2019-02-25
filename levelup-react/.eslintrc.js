@@ -18,12 +18,10 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['react'],
-  extends: 'airbnb',
+  extends: ['airbnb', 'prettier'],
   rules: {
     'react/jsx-filename-extension': 0,
-    'function-paren-newline': 0,
     'react/prefer-stateless-function': 0,
-    indent: 0,
     'no-console': 0
   },
   globals: {
