@@ -14,7 +14,7 @@ class MoviesList extends PureComponent {
         'https://api.themoviedb.org/3/discover/movie?api_key=8be073837c1de6e9c10ad7d98b70aa3c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
       );
       const movies = await res.json();
-      if (movies.success) {
+      if (movies.results.length) {
         this.setState({
           movies: movies.results
         });

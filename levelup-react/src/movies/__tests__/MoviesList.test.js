@@ -11,16 +11,16 @@ const movies = {
   success: true,
   results: [
     {
-      id: 'movie 1',
+      id: 123,
       title: 'movie title 1',
-      poster_path: 'poster1.jpg',
+      poster_path: 'poster1.jpg'
     },
     {
-      id: 'movie 2',
+      id: 124,
       title: 'movie title 2',
-      poster_path: 'poster2.jpg',
-    },
-  ],
+      poster_path: 'poster2.jpg'
+    }
+  ]
 };
 
 const movie = movies.results[0];
@@ -30,7 +30,7 @@ test('<MoviesList />', async () => {
   const { getByTestId, queryByTestId, getAllByTestId } = render(
     <MemoryRouter>
       <MoviesList />
-    </MemoryRouter>,
+    </MemoryRouter>
   );
   expect(getByTestId('loading-message')).toBeTruthy();
   await waitForElement(() => getByTestId('movie-link'));
@@ -45,7 +45,7 @@ test('<MoviesList /> API fail', async () => {
   const { getByTestId } = render(
     <MemoryRouter>
       <MoviesList />
-    </MemoryRouter>,
+    </MemoryRouter>
   );
   await waitForElement(() => getByTestId('movie-link'));
   expect(getByTestId('loading-message')).toBeTruthy();

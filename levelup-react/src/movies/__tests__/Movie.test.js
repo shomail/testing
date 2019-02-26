@@ -13,9 +13,9 @@ afterEach(() => {
 console.error = jest.fn();
 
 const movie = {
-  id: 'movie id',
+  id: 123,
   title: 'Movie Title',
-  poster_path: 'poster_img.jpg',
+  poster_path: 'poster_img.jpg'
 };
 
 test('<Movie />', () => {
@@ -29,7 +29,7 @@ test('<Movie /> with Movie prop', () => {
   const { getByTestId } = render(
     <MemoryRouter>
       <Movie movie={movie} />
-    </MemoryRouter>,
+    </MemoryRouter>
   );
   expect(console.error).not.toBeCalled();
   expect(getByTestId('movie-link').getAttribute('href')).toBe(`/${movie.id}`);
