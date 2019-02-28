@@ -1,5 +1,7 @@
 describe('view movies as anonymous', () => {
   it('can show movies list', () => {
-    cy.visit('/');
+    cy.visit('/')
+      .get('.App-logo')
+      .click();
   });
 });
